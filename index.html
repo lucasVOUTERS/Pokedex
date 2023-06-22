@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link rel="preload" href="https://via.placeholder.com/160" as="image">
+    <script src="script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img id="Pokedex" src="imgs/Pokédex_logo.png" alt="PokéDex">
+    </header>
+    <main>
+        <div id="pokeball">
+            <img src="imgs/game.png" alt="PokeBall">
+        </div>
+        <div id="popup">
+            <img onclick="closePopup()" id="closeCross" src="imgs/close.png" alt="close">
+            <div id="popUpContent"></div>
+        </div>
+        <div id="pokemonList">
+            <input type="search" id="inputSearch" placeholder="Nom du Pokémon">
+            <div id="grid"></div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    </main>
+
+    <div id="tempoBack" style="position: fixed;width: 100vw;height: 100vh;top: 0;background-color: aqua;z-index: 3;">
+
+    </div>
+    <div id="pokeballLogo">
+        <div id="toUp">
+            <div id="pokeballTop">
+                <div id="pokeballCenter">
+                    <div id="centerIntra"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toDown">
+            <div id="pokeballBottom">
+                <div id="bottomNotch">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

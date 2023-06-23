@@ -25,14 +25,8 @@
     box-sizing: border-box;
 }
 
-/* body{
-    background-color: #a9b2c3;
-} */
-
-
-
 header{
-    width: 100%;
+    width: auto;
     padding: 20px;
     background-color: red;
 }
@@ -61,6 +55,14 @@ header{
     width: 70%;
     margin: auto;
     margin-top: 3%;
+
+    @media (min-width: 800px) and (max-width: 1440px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 799px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 #pokemonList{    
@@ -252,7 +254,7 @@ input[type=search]::-webkit-search-cancel-button {
     border-radius: var(--varHalfSquare) var(--varHalfSquare) 0 0;
     margin: auto;
     position: relative;
-    top: calc(100% - var(--varSquare) / 2);
+    top: calc(100.1% - var(--varSquare) / 2);
 }
 
 #pokeballBottom{

@@ -57,10 +57,11 @@ setTimeout(() => {
     }, 500);
 }, 2000);
 
+logJSONData();
 
-fetch('https://api-pokemon-fr.vercel.app/api/v1/gen/1')
-  .then(response => response.json())
-  .then(data => {
+async function logJSONData() {
+    const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/gen/1');
+    const data = await response.json();
     pokemons = data.map(pokemon => {
         if(pokemon.pokedexId !=0){
             const poke = document.createElement('div');
@@ -103,7 +104,55 @@ fetch('https://api-pokemon-fr.vercel.app/api/v1/gen/1')
         }
     })
     gridDiv.style.hidden = false;
-  })
+}
+
+
+// fetch('https://api-pokemon-fr.vercel.app/api/v1/gen/1')
+//   .then(response => response.json())
+//   .then(data => {
+//     pokemons = data.map(pokemon => {
+//         if(pokemon.pokedexId !=0){
+//             const poke = document.createElement('div');
+//             poke.classList.add('item');
+    
+//             poke.addEventListener("click", function(){
+//                 //location.href=`details.html?pokemonName=${pokemon.name.fr}`;
+//                 popUp(pokemon.pokedexId);
+//             });
+    
+//             if(Object.keys(pokemon.types).length > 1){
+//                 preload(pokemon.types[0].image);
+//                 preload(pokemon.types[1].image);
+//                 const type1 = tabTypes[pokemon.types[0].name];
+//                 const type2 = tabTypes[pokemon.types[1].name];
+//                 poke.style.backgroundImage = `linear-gradient(to right top, ${type1} 50%, ${type2} 50%)`;
+//                 poke.style.setProperty('--item-box-shadow', '5px -5px 10px 5px '+ type2 +', -5px 5px 10px 5px ' + type1);
+//             } else{
+//                 preload(pokemon.types[0].image);
+//                 const typeColor = tabTypes[pokemon.types[0].name];
+//                 poke.style.background = typeColor;
+//                 poke.style.setProperty('--item-box-shadow', '5px -5px 10px 5px '+ typeColor +', -5px 5px 10px 5px ' + typeColor);
+//             }
+    
+//             preload(pokemon.sprites.regular);
+    
+//             const imgPoke = document.createElement('img');
+//             imgPoke.src = pokemon.sprites.regular
+    
+//             const pokeName = document.createElement('div');
+//             pokeName.classList.add('pokemonFont');
+//             const pokemonName = pokemon.name.fr
+//             pokeName.innerHTML = pokemonName;
+    
+//             poke.appendChild(imgPoke);
+//             poke.appendChild(pokeName);
+//             gridDiv.appendChild(poke);
+    
+//             return { id: pokemon.pokedexId, types: pokemon.types, img: pokemon.sprites.regular, name: pokemon.name.fr, stats: pokemon.stats, element: poke};
+//         }
+//     })
+//     gridDiv.style.hidden = false;
+//   })
 
 function popUp(pokemonId) {
     var pokemon = pokemons[pokemonId-1];

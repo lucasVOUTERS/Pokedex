@@ -60,8 +60,10 @@ setTimeout(() => {
 logJSONData();
 
 async function logJSONData() {
-    const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/gen/1');
+    //const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/gen/1');
+    const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/pokemon');
     const data = await response.json();
+    var verif = false;
     pokemons = data.map(pokemon => {
         if(pokemon.pokedexId !=0){
             const poke = document.createElement('div');
@@ -102,7 +104,16 @@ async function logJSONData() {
     
             return { id: pokemon.pokedexId, types: pokemon.types, img: pokemon.sprites.regular, name: pokemon.name.fr, stats: pokemon.stats, element: poke};
         }
+        else{
+            verif = !verif;
+        }
     })
+
+    if (verif === true) {
+        pokemons.shift();
+    }
+    
+    console.log(pokemons);
     gridDiv.style.hidden = false;
 }
 

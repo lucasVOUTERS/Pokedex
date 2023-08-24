@@ -1,7 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/pokemon-solid');
 
-
-
 #pokeball{
     position: fixed;
     display: flex;
@@ -27,8 +25,12 @@
 
 header{
     width: auto;
-    padding: 20px;
+    padding: 10px;
     background-color: red;
+}
+
+header img{
+    height: 90px;
 }
 
 #Pokedex{

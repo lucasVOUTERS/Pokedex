@@ -14,6 +14,25 @@ var images = [];
 var lastScrollTop = 0;
 var rotation = 0
 
+var everythingElse = document.getElementById("pokemonList");
+
+everythingElse.addEventListener("click", function(){
+
+    if (popUpDiv.classList.contains('verif')) {
+        console.log('execute');
+        popUpDiv.classList.remove('popUpShow');
+        popUpDiv.classList.remove('verif');
+        pokemonList.style.filter = "";
+    
+        setTimeout(() => {
+            popUpContent.innerHTML = "";
+            gridDiv.style.pointerEvents = "";
+        }, 200)   
+    } else{
+        popUpDiv.classList.add('verif');
+    }
+});
+
 document.addEventListener("scroll", function(){
     Pokedex.style.transform = "rotate(" + window.pageYOffset/10 + "deg)";
 });
@@ -113,7 +132,7 @@ async function logJSONData() {
         pokemons.shift();
     }
     
-    console.log(pokemons);
+    // console.log(pokemons);
     gridDiv.style.hidden = false;
 }
 
@@ -203,16 +222,17 @@ function popUp(pokemonId) {
     popUpDiv.classList.add('popUpShow');
     popUpContent.innerHTML = htmlString;
     pokemonList.style.filter = "blur(5px)";
-    pokemonList.style.pointerEvents = "none";
+    gridDiv.style.pointerEvents = "none";
 }
 
 function closePopup() {
     popUpDiv.classList.remove('popUpShow');
     pokemonList.style.filter = "";
+    popUpDiv.classList.remove('verif');
 
     setTimeout(() => {
         popUpContent.innerHTML = "";
-        pokemonList.style.pointerEvents = "";
+        gridDiv.style.pointerEvents = "";
     }, 200)
 }
 

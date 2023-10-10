@@ -16,6 +16,13 @@
     width: 100%;
 }
 
+body{
+    background: url(imgs/backGround.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 *{
     margin: 0;
@@ -107,13 +114,13 @@ header img{
     position: fixed;
     background-color: lightgrey;
     width: 550px;
-    height: 800px;
+    height: 80%;
     margin-left: -550px;
     padding: var(--taille);
     z-index: 2;
     clip-path: polygon(calc(100% - var(--taille)) 100%, 100% calc(100% - var(--taille)), 100% var(--taille), calc(100% - var(--taille)) 0, 0 0, 0 100%);
     transition: 0.2s;
-    top: calc(50% - 800px /2);
+    top: calc(50% - 80% /2);
 }
 
 #popUpContent{

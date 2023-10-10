@@ -28,7 +28,7 @@ everythingElse.addEventListener("click", function(){
             popUpContent.innerHTML = "";
             gridDiv.style.pointerEvents = "";
         }, 200)   
-    } else{
+    } else if(popUpDiv.classList.contains('popUpShow')){
         popUpDiv.classList.add('verif');
     }
 });

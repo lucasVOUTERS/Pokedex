@@ -6,7 +6,9 @@ const Pokedex = document.getElementById('pokeball');
 const popUpDiv = document.getElementById('popup');
 const popUpContent = document.getElementById('popUpContent');
 const pokemonList = document.getElementById('pokemonList');
+
 const inputSearch = document.getElementById('inputSearch');
+const searchReset = document.getElementById('reset');
 
 let pokemons = [];
 var images = [];
@@ -19,7 +21,7 @@ var everythingElse = document.getElementById("pokemonList");
 everythingElse.addEventListener("click", function(){
 
     if (popUpDiv.classList.contains('verif')) {
-        console.log('execute');
+
         popUpDiv.classList.remove('popUpShow');
         popUpDiv.classList.remove('verif');
         pokemonList.style.filter = "";
@@ -46,6 +48,11 @@ inputSearch.addEventListener("input", e => {
     }
 })
 
+searchReset.addEventListener("click", function(){
+    inputSearch.value = "";
+    inputSearch.dispatchEvent(new Event("input"))
+})
+
 const tabTypes = {
     "Acier": "rgba(183, 183, 206, 1)",
     "Combat": "rgba(194, 46, 40, 1)",
@@ -67,6 +74,15 @@ const tabTypes = {
     "Vol": "rgba(169, 143, 243, 1)",
 }
 
+const tabNameStats = {
+    "hp": "PV",
+    "atk": "Attaque",
+    "def": "Défense",
+    "spe_atk": "Attaque Spéciale",
+    "spe_def": "Défense Spéciale",
+    "vit": "Vitesse",
+}
+
 setTimeout(() => {
     const tempo = document.getElementById('tempoBack');
     tempo.remove();
@@ -79,8 +95,8 @@ setTimeout(() => {
 logJSONData();
 
 async function logJSONData() {
-    //const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/gen/1');
-    const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/pokemon');
+    const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/gen/1');
+    // const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/pokemon');
     const data = await response.json();
     var verif = false;
     pokemons = data.map(pokemon => {
@@ -131,8 +147,6 @@ async function logJSONData() {
     if (verif === true) {
         pokemons.shift();
     }
-    
-    // console.log(pokemons);
     gridDiv.style.hidden = false;
 }
 
@@ -210,7 +224,7 @@ function popUp(pokemonId) {
     Object.entries(pokemon.stats).forEach(([key, value]) => {
         htmlString +=`
             <div>
-                <label class="statsName" for="${key}">${key}:</label>
+                <label class="statsName" for="${tabNameStats[key]}">${tabNameStats[key]}:</label>
                 <progress id="${key}" max="255" value="${value}"></progress>
                 <label class="statsValues">${value}</label>
             </div>

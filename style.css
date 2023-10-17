@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    filter: blur(2px);
+    /* filter: blur(2px); */
     width: 600px;
     left: calc(600px / -2);
     top: 0;
@@ -17,11 +17,9 @@
 }
 
 body{
-    background: url(imgs/backGround.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background: url(imgs/backGround.jpg) no-repeat center fixed;
     background-size: cover;
+    scroll-behavior: smooth;
 }
 
 *{
@@ -102,25 +100,18 @@ header img{
     box-shadow: var(--item-box-shadow);
 }
 
-.pokemonDetails{
-    color: #2a75bb;
-    font-size: large;
-    font-weight: bolder;
-    font-family: sans-serif;
-}
-
 #popup{
     --taille: 30px; 
     position: fixed;
     background-color: lightgrey;
     width: 550px;
-    height: 80%;
+    height: 905px;
     margin-left: -550px;
     padding: var(--taille);
     z-index: 2;
     clip-path: polygon(calc(100% - var(--taille)) 100%, 100% calc(100% - var(--taille)), 100% var(--taille), calc(100% - var(--taille)) 0, 0 0, 0 100%);
     transition: 0.2s;
-    top: calc(50% - 80% /2);
+    top: calc(50% - (905px/ 2));
 }
 
 #popUpContent{
@@ -152,24 +143,40 @@ header img{
     display: none;
 }
 
-#inputSearch{
-    font-size: xx-large;
-    border-radius: 15px;
-    padding: 10px;
-    text-align: center;
-    display: block;
-    margin: auto;
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+#searchLine{
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: 799px) {
+        flex-direction: column;
+    }
 }
 
-input[type=search]::-webkit-search-cancel-button {
-    -webkit-appearance: searchfield-cancel-button;
+#reset{
+    cursor: pointer;
+    color: white;
+    background-color: rgb(28, 198, 255);
+}
+
+#inputSearch, #reset{
+    font-size: xx-large;
+    border-radius: 50px;
+    padding: 15px;
+    text-align: center;
+    display: block;
+    margin: 10px;
 }
 
 #myBtn {
     display: none;
     position: fixed;
     bottom: 20px;
-    right: 30px;
+    right: 20px;
     z-index: 99;
     font-size: 18px;
     border: none;
@@ -186,15 +193,20 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 .pokemonDetails{
-    font-family: sans-serif;
     width: 85%;
     margin-top: 25px;
+    color: #2a75bb;
+    font-size: x-large;
+    font-weight: bolder;
+    font-family: sans-serif;
 }
 
 .pokemonDetails div{
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
+    display: flex;
+    align-items: center;
 }
 
 .pokemonDetails progress{

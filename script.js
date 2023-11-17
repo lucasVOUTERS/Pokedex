@@ -95,8 +95,8 @@ setTimeout(() => {
 logJSONData();
 
 async function logJSONData() {
-    const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/gen/1');
-    // const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/pokemon');
+    const response = await fetch('https://tyradex.vercel.app/api/v1/gen/1');
+    // const response = await fetch('https://tyradex.vercel.app/api/v1/pokemon');
     const data = await response.json();
     var verif = false;
     pokemons = data.map(pokemon => {
